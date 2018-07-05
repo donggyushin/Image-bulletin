@@ -21,5 +21,12 @@ public class MainController {
 		mav.addObject("result", result);
 		return mav;
 	}
+	
+	@RequestMapping("/SignUp")
+	public ModelAndView SignUp() {
+		ModelAndView mav = new ModelAndView("SignUp/index");
+		
+		return mav;
+	}
 
 }

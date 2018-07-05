@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+  <link rel="stylesheet" href="./styles.css">
+<title>Main</title>
+	<jsp:include page="./Navigation/style.jsp" flush="false"/>
 </head>
 <body>
-this is ${result.pageName}
+  	<jsp:include page="./Navigation/index.jsp" flush="false"/>
 </body>
 </html>

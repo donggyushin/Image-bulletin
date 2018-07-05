@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.Container {
+  width: 100%;
+  display: flex;
+}
+
+.Container__left {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Container__right {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.Container__right__SignupForm {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+.Container__right__SignupForm__h2 {
+  font-family: "Shrikhand", cursive;
+}
+
+.Container__right__SignupForm__input {
+  background-color: #d0d1e2;
+  height: 25px;
+  margin-bottom: 17px;
+  border-radius: 7px;
+  border: 0px;
+}
+
+.Container__right__SignupForm__submit {
+  height: 30px;
+  margin-top: 20px;
+  background-color: #32b3ff;
+  color: white;
+  border-radius: 7px;
+}

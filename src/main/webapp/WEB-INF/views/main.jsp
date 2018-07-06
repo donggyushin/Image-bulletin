@@ -10,5 +10,15 @@
 </head>
 <body>
   	<jsp:include page="./Navigation/index.jsp" flush="false"/>
+  	<%
+  	String ErrorMessage = null;
+  	ErrorMessage = (String)request.getAttribute("ErrorMessage");
+  	
+  	if(ErrorMessage != null){
+  		%>
+  		<script>alert("Id and email is duplicated");</script>
+  		<%
+  	}
+  	%>
 </body>
 </html>

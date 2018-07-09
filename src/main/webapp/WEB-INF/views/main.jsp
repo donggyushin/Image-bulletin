@@ -4,21 +4,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" href="./styles.css">
+
 <title>Main</title>
 	<jsp:include page="./Navigation/style.jsp" flush="false"/>
+	<jsp:include page="./styles.jsp" flush="false" />
+
 </head>
 <body>
   	<jsp:include page="./Navigation/index.jsp" flush="false"/>
   	<%
   	String ErrorMessage = null;
   	ErrorMessage = (String)request.getAttribute("ErrorMessage");
-  	
+
   	if(ErrorMessage != null){
   		%>
-  		<script>alert("Id and email is duplicated");</script>
+  	<div class="modalBox" id="modalBox">
+      <div class="modalBox__head">
+        <hr>
+      </div>
+      <div class="modalBox__body">
+        <div class="modalBox__body__row">
+          <span class="modalBox__body__row__message">Id or email is duplicated</span>
+        </div>
+        <div class="modalBox__body__row">
+          <span class="modalBox__body__row__close" onclick="document.getElementById('modalBox').style.display='none'">close</span>
+        </div>
+      </div>
+    </div>
   		<%
+  		ErrorMessage = null;
   	}
   	%>
+
+    
 </body>
 </html>

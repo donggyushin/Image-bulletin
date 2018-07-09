@@ -4,7 +4,7 @@
     </div>
     <div class="highNav__managements">
       <span class="highNav__managements__span">
-<a href="#" class="highNav__a">Signin</a>
+<a href="/SignIn" class="highNav__a">Signin</a>
         </span>
       <span class="highNav__managements__span"><a href="/SignUp" class="highNav__a">Signup</a></span>
     </div>

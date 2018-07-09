@@ -28,5 +28,12 @@ public class MainController {
 		
 		return mav;
 	}
+	
+	@RequestMapping("/SignIn")
+	public ModelAndView SignIn() {
+		ModelAndView mav = new ModelAndView("SignIn/index");
+		
+		return mav;
+	}
 
 }

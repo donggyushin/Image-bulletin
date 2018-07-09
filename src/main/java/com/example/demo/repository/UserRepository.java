@@ -7,4 +7,6 @@ import com.example.demo.domain.User;
 public interface UserRepository extends CrudRepository<User, Long> {
 	User findByEmailOrUserId(String email, String userId);
 	
+	User findByUserId(String userId);
+	
 }

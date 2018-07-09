@@ -6,57 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Sign In</title>
 	<jsp:include page="../Navigation/style.jsp" flush="false"/>
-  <style media="screen">
-    .container {
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-    }
-
-    .container__inner {
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 40%;
-    }
-
-    .container__inner > span {
-      font-family: 'Shrikhand', cursive;
-      color: #98999B;
-    }
-
-    .container__inner__SigninForm {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .container__inner__SigninForm__header {
-      font-family: 'Shrikhand', cursive;
-      font-size: 40px;
-    }
-
-    .container__inner__SigninForm > input {
-      width: 80%;
-      background-color: #CFD2D1;
-      border: 0px;
-      height: 30px;
-      margin-top: 15px;
-      border-radius: 9px;
-    }
-
-    .container__inner__SigninForm__button {
-
-      color: white;
-      font-size: 25px;
-    }
-
-    #container__inner__SigninForm__button {
-      background-color: #74B4E8;
-    }
-  </style>
+  	<jsp:include page="./styles.jsp" flush="false"/>
 </head>
 <body>
 <jsp:include page="../Navigation/index.jsp" flush="false"/>
@@ -65,10 +15,10 @@
     <span>Please input your info...</span>
   </div>
   <div class="container__inner">
-    <form class="container__inner__SigninForm" action="#" method="post">
+    <form class="container__inner__SigninForm" action="/user/login" method="post">
       <span class="container__inner__SigninForm__header">Sign In</span>
-      <input type="text" name="userId" value="" placeholder="ID...">
-      <input type="password" name="userPassword" value="" placeholder="password...">
+      <input type="text" name="userId" value="" placeholder="ID..." required="required">
+      <input type="password" name="userPassword" value="" placeholder="password..." required="required">
       <input type="submit" name="submit" id="container__inner__SigninForm__button" class="container__inner__SigninForm__button" value="submit">
     </form>
   </div>

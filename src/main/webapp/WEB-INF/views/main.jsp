@@ -24,7 +24,7 @@
       </div>
       <div class="modalBox__body">
         <div class="modalBox__body__row">
-          <span class="modalBox__body__row__message">Id or email is duplicated</span>
+          <span class="modalBox__body__row__message"><%=ErrorMessage%></span>
         </div>
         <div class="modalBox__body__row">
           <span class="modalBox__body__row__close" onclick="document.getElementById('modalBox').style.display='none'">close</span>
@@ -35,7 +35,8 @@
   		ErrorMessage = null;
   	}
   	%>
+  	
 
-    
+
 </body>
 </html>

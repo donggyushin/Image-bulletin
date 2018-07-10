@@ -4,7 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -16,6 +18,10 @@ public class Article {
 	@GeneratedValue
 	private int id;
 	
+	@ManyToOne
+	@JoinColumn(name="user")
+	private User user;
+	
 	@Column(length=500, nullable = false)
 	String fileName;
 	@Column(length=500, nullable = false)
@@ -26,6 +32,19 @@ public class Article {
 	@Lob
 	String content;
 	
+	
+	
+	
+	
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Article() {
 		
 	}

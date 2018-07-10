@@ -1,9 +1,15 @@
 package com.example.demo.domain;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -21,6 +27,21 @@ public class User {
 	@Column(nullable = false, unique = true, length = 70)
 	private String email;
 	
+	
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="user")
+	private Collection<Article> article;
+	
+	
+	
+	
+	public Collection<Article> getArticle() {
+		return article;
+	}
+
+	public void setArticle(Collection<Article> article) {
+		this.article = article;
+	}
+
 	public User() {
 		
 	}

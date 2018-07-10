@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +13,7 @@
 <jsp:include page="../Navigation/index.jsp" flush="false"/>
 <div class="container">
   <div class="formContainer">
-    <form class="articleForm" action="/article/upload" enctype="multipart/form-data" method="post">
+    <form class="articleForm" action="/article/upload/${loginedUser.id}" enctype="multipart/form-data" method="post">
       <textarea name="content" rows="8" cols="80" placeholder="you can submit only image files..."></textarea>
       <input type="file" name="files">
       <input class="submit" type="submit" name="submit" value="submit">

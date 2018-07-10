@@ -1,4 +1,22 @@
 <style media="screen">
+
+    .postButton {
+      background-color: #98999B;
+      color: white;
+      border-radius: 8px;
+      font-size: 20px;
+      padding: 5px;
+      position: relative;
+      left: 50px;
+      top:30px;
+    }
+
+    .postButton > a {
+      text-decoration: none;
+      color: white;
+    }
+
+
       .modalBox {
         background-color: #98999B;
         width: 404px;

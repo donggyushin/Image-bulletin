@@ -13,6 +13,17 @@
 <body>
   	<jsp:include page="./Navigation/index.jsp" flush="false"/>
   	<%
+  	String sessionedUser2 = null;
+  	sessionedUser2 = (String)session.getAttribute("sessionedUser");
+  		if(sessionedUser2 != null){
+  			%>
+  			<div>
+          <span class="postButton"><a href="/article/form">Post</a></span>
+        </div>
+  			<%
+  		}
+  	%>
+  	<%
   	String ErrorMessage = null;
   	ErrorMessage = (String)request.getAttribute("ErrorMessage");
 
@@ -35,7 +46,7 @@
   		ErrorMessage = null;
   	}
   	%>
-  	
+
 
 
 </body>

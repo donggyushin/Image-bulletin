@@ -1,63 +1,69 @@
 package com.example.demo.controller;
 
-import java.util.Date;
-import java.util.List;
+import java.io.File;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.domain.Article;
 import com.example.demo.repository.ArticleRepository;
 
 @Controller
-@RequestMapping(value= "/article")
+@RequestMapping(value="/article")
 public class ArticleController {
 	
 	@Autowired
-	private ArticleRepository articleRepository;
+	ArticleRepository articleRepository;
 	
-	//article form 페이지
-	@GetMapping(value="/form")
+	@GetMapping(value="")
 	public String articleForm() {
 		return "/article/form";
 	}
 	
-	
-	//특정 article 조회 
-	@GetMapping(value="/{id}")
-	public String getArticle(Model model, @PathVariable int id) {
+	@PostMapping(value="/upload")
+	public String uploadArticle(HttpServletRequest request, @RequestPart MultipartFile files) throws Exception {
 		
-		Article article = articleRepository.findById(id).get();
-		model.addAttribute("article", article);
+		Article article = new Article();
 		
-		return "/article/detail";
+		article.setContent(request.getParameter("content"));
+		
+		if(files.isEmpty()) {
+			return "main";
+		}else {
+			String sourceFileName = files.getOriginalFilename();
+			String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
+			File destinationFile; 
+			String destinationFileName;
+			String fileUrl = "/Users/jwajunhyeob/workspace-spring/SpringTest/src/main/webapp/WEB-INF/uploadFiles/";
+			
+			do {
+				destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension;
+				destinationFile = new File(fileUrl + destinationFileName);
+			}while(destinationFile.exists());
+			
+			destinationFile.getParentFile().mkdirs();
+			files.transferTo(destinationFile);
+			
+			article.setFileName(destinationFileName);
+			article.setFileOriName(sourceFileName);
+			article.setFileUrl(fileUrl);
+			
+			articleRepository.save(article);
+		}
+		
+		
+		
+		
+		return "main";
 	}
 	
-	//전체 article조회  
-	@GetMapping(value="")
-	public String getArticleList(Model model) {
-		List<Article> articleList = articleRepository.findAll();
-		model.addAttribute("articleList", articleList);
-		return "/article/list";
-	}
-	
-	//article 등록 
-	@PostMapping(value="")
-	public String setArticle(Article article) {
-		article.setRegDate(new Date());
-		
-		System.out.println(article);
-		
-		articleRepository.save(article);
-		
-		return "redirect:/article/";
-	}
-	
-	
-
 }

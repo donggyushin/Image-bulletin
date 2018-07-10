@@ -1,11 +1,10 @@
 package com.example.demo.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import lombok.Data;
 
@@ -15,21 +14,27 @@ public class Article {
 	
 	@Id
 	@GeneratedValue
-	int id;
+	private int id;
 	
-	@Column(length = 100000000)
+	@Column(length=500, nullable = false)
+	String fileName;
+	@Column(length=500, nullable = false)
+	String fileOriName;
+	@Column(length=500, nullable = false)
+	String fileUrl;
+	
+	@Lob
 	String content;
-	
-	Date regDate;
-	
 	
 	public Article() {
 		
 	}
 	
-	public Article(String content, Date regDate) {
+	public Article(String fileName, String fileOriName, String fileUrl, String content) {
+		this.fileName = fileName;
+		this.fileOriName = fileOriName;
+		this.fileUrl = fileUrl;
 		this.content = content;
-		this.regDate = regDate;
 	}
 
 	public int getId() {
@@ -40,6 +45,30 @@ public class Article {
 		this.id = id;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileOriName() {
+		return fileOriName;
+	}
+
+	public void setFileOriName(String fileOriName) {
+		this.fileOriName = fileOriName;
+	}
+
+	public String getFileUrl() {
+		return fileUrl;
+	}
+
+	public void setFileUrl(String fileUrl) {
+		this.fileUrl = fileUrl;
+	}
+
 	public String getContent() {
 		return content;
 	}
@@ -48,24 +77,11 @@ public class Article {
 		this.content = content;
 	}
 
-	public Date getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", content=" + content + ", regDate=" + regDate + "]";
+		return "Article [id=" + id + ", fileName=" + fileName + ", fileOriName=" + fileOriName + ", fileUrl=" + fileUrl
+				+ ", content=" + content + "]";
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

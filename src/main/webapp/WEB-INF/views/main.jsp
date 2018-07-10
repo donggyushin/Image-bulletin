@@ -18,7 +18,7 @@
   		if(sessionedUser2 != null){
   			%>
   			<div>
-          <span class="postButton"><a href="/article/form">Post</a></span>
+          <span class="postButton"><a href="/article">Post</a></span>
         </div>
   			<%
   		}
